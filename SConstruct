@@ -37,12 +37,14 @@ uninittestReport= testEnv.Command('unit_report.xml', uninitialized01Prog, "./uni
 
 illegaltestReport= testEnv.Command('illegal_report.xml', illegalAccess01Prog, "./illegalAccess01.ut --gtest_output=xml:${TARGET}")
 
+memleaktestReport= testEnv.Command('memleak_report.xml', memoryLeak01Prog, "./memoryLeak01.ut --gtest_output=xml:${TARGET}")
+
 artifacts = [
     uninitialized01Prog,
     illegalAccess01Prog,
     memoryLeak01Prog,
     strcpy01Prog,
-	uninittestReport
+    uninittestReport
 ]
 
 testEnv.Clean(artifacts, 'build')
