@@ -33,11 +33,16 @@ strcpy01Prog = testEnv.Program(
     ['build/strcpy01.c', 'build/strcpy01_test.cc']
 )
 
+uninittestReport= testEnv.Command('unit_report.xml', uninitialized01Prog, "./uninitialized01.ut --gtest_output=xml:${TARGET}")
+
+illegaltestReport= testEnv.Command('illegal_report.xml', illegalAccess01Prog, "./illegalAccess01.ut --gtest_output=xml:${TARGET}")
+
 artifacts = [
     uninitialized01Prog,
     illegalAccess01Prog,
     memoryLeak01Prog,
-    strcpy01Prog
+    strcpy01Prog,
+	uninittestReport
 ]
 
 testEnv.Clean(artifacts, 'build')
